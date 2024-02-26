@@ -1,16 +1,31 @@
 {
   "expo": {
     "name": "RN-EXPO",
-    "slug": "RN-EXPO",
+    "slug": "postku",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/splashscreen.png",
+      "resizeMode": "contains",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/Poppins-Regular.ttf",
+            "./assets/Poppins-Medium.ttf",
+            "./assets/Poppins-SemiBold.ttf",
+            "./assets/Poppins-Thin.ttf",
+            "./assets/Poppins-Light.ttf",
+            "./assets/Poppins-Bold.ttf"
+          ]
+        }
+      ]
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -25,6 +40,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8e81756e-2489-49e9-af30-95a1ddfb1eb8"
+      }
+    },
+    "owner": "dfaw17"
   }
 }
