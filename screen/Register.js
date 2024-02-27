@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, ScrollView, StatusBar, TextInput, TouchableOpaci
 import DropdownComponent from "../component/dropdown"
 import ModalRespComponent from "../component/modal_resp"
 import {useState} from "react";
+import * as Colors from '../assets/colour';
 
 export default function Register({navigation}) {
     const [isModalVisible, setModalVisible] = useState(false);
@@ -25,7 +26,7 @@ export default function Register({navigation}) {
     return (
         <ScrollView style={styles.scrollViewContainer}>
             <View style={styles.container}>
-                <StatusBar barStyle={"light-content"} backgroundColor={'#f99722'}/>
+                <StatusBar barStyle={"light-content"} backgroundColor={Colors.primaryColor}/>
                 <Text style={styles.sectionWelcoming}>Halo UMKMers, ayo lengkapi data dibawah</Text>
                 <View style={styles.containerSection}>
                     <Text style={styles.titleSection}>Data Owner</Text>
@@ -90,12 +91,12 @@ const styles = StyleSheet.create({
     titleSection: {
         fontSize: 18,
         fontFamily: "PoppinsBold",
-        color: 'rgba(0, 0, 0, 0.7)'
+        color: Colors.black70
     },
     inputTextSection: {
         fontFamily: 'PoppinsLight',
         fontSize: 16,
-        borderColor: "#C5C5C5",
+        borderColor: Colors.grey,
         borderRadius: 10,
         width: 340,
         borderWidth: 1,
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     btnRegister: {
         width: 340,
         height: 50,
-        backgroundColor: "#F99722",
+        backgroundColor: Colors.primaryColor,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 20,

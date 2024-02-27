@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {useState} from "react";
 import ModalRespComponent from "../component/modal_resp"
+import * as Colors from '../assets/colour';
 
 export default function Login({navigation}) {
     const [isFocused1, setIsFocused1] = useState(false);
@@ -34,21 +35,25 @@ export default function Login({navigation}) {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle={"light-content"} backgroundColor={'#f99722'}/>
+            <StatusBar barStyle={"light-content"} backgroundColor={Colors.primaryColor}/>
+
+            {/* ============================= SECTION ATAS =============================  */}
             <View style={styles.containerTitle}>
                 <Text style={styles.title1}>Ayo masuk.</Text>
                 <Text style={styles.title2}>Dan mulai petualangan bisnismu bersama kami</Text>
             </View>
+
+            {/* ============================= SECTION TENGAH =============================  */}
             <View style={styles.containerInputText}>
                 <TextInput
                     placeholder="Email"
-                    style={[styles.inputTextEmail, {borderColor: isFocused1 ? 'orange' : 'gray'}]}
+                    style={[styles.inputTextEmail, {borderColor: isFocused1 ? Colors.primaryColor : Colors.grey}]}
                     onFocus={() => [setIsFocused1(true), setIsFocused2(false)]}/>
 
                 <TextInput
                     placeholder="Password"
                     secureTextEntry={true}
-                    style={[styles.inputTextPwd, {borderColor: isFocused2 ? 'orange' : 'gray',}]}
+                    style={[styles.inputTextPwd, {borderColor: isFocused2 ? Colors.primaryColor : Colors.grey,}]}
                     onFocus={() => [setIsFocused1(false), setIsFocused2(true)]}/>
 
                 <View style={styles.containerSSO}>
@@ -65,10 +70,12 @@ export default function Login({navigation}) {
                     </TouchableOpacity>
                 </View>
             </View>
+
+            {/* ============================= SECTION BAWAH BUTTON =============================  */}
             <View style={styles.containerLoginRegister}>
                 <Text style={{fontFamily: "PoppinsRegular"}}>
                     Belum punya akun?
-                    <Text onPress={() => navigation.navigate("Register")} style={{color: "#F99722"}}> Daftar </Text>
+                    <Text onPress={() => navigation.navigate("Register")} style={{color: Colors.primaryColor}}> Daftar </Text>
                 </Text>
 
                 <TouchableOpacity onPress={openModal}>
@@ -100,11 +107,11 @@ const styles = StyleSheet.create({
     },
     title1: {
         fontSize: 36,
-        color: "#F99722",
+        color: Colors.primaryColor,
         fontFamily: "PoppinsBold"
     },
     title2: {
-        color: "#FFBE65",
+        color: Colors.primaryColor,
         fontSize: 18,
         marginTop: 5,
         fontFamily: "PoppinsRegular"
@@ -147,13 +154,13 @@ const styles = StyleSheet.create({
         gap: 20,
     },
     strip1: {
-        backgroundColor: "#C5C5C5",
+        backgroundColor: Colors.grey,
         width: 100,
         height: 1,
         marginLeft: 30,
     },
     strip2: {
-        backgroundColor: "#C5C5C5",
+        backgroundColor: Colors.grey,
         width: 100,
         height: 1,
         marginRight: 30,
@@ -161,7 +168,7 @@ const styles = StyleSheet.create({
     txtSSO: {
         textAlign: "center",
         fontSize: 11,
-        color: "#C5C5C5",
+        color: Colors.grey,
         fontFamily: "PoppinsRegular",
         marginHorizontal: 10
     },
@@ -174,7 +181,7 @@ const styles = StyleSheet.create({
     btnLogin: {
         width: 355,
         height: 50,
-        backgroundColor: "#F99722",
+        backgroundColor: Colors.primaryColor,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 10,

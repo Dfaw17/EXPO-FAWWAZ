@@ -7,9 +7,12 @@ import {
 } from "react-native";
 import React, {useMemo, useState} from 'react';
 import RadioGroup from 'react-native-radio-buttons-group';
+import SnackbarComponent from "../component/snackbar";
+import * as Colors from '../assets/colour';
 
 export default function ChooseOutlet({navigation}) {
     const [selectedId, setSelectedId] = useState();
+    const [snackbarVisible, setSnackbarVisible] = useState(false);
     const data_toko = [
         {
             label: "Toko Jababeka",
@@ -42,16 +45,16 @@ export default function ChooseOutlet({navigation}) {
             label: toko.label,
             value: toko.toko_id.toString(),
             borderSize: 2,
-            color: selectedId === toko.toko_id.toString() ? "#F99722" : "grey",
+            color: selectedId === toko.toko_id.toString() ? Colors.secondaryColor : Colors.grey,
             containerStyle: {
                 borderWidth: 2,
-                borderColor: selectedId === toko.toko_id.toString() ? "#F99722" : "grey",
+                borderColor: selectedId === toko.toko_id.toString() ? Colors.secondaryColor : Colors.grey,
                 width: 350,
                 padding: 10,
                 borderRadius: 10,
             },
             labelStyle: {
-                color: selectedId === toko.toko_id.toString() ? "#F99722" : "grey",
+                color: selectedId === toko.toko_id.toString() ? Colors.secondaryColor : Colors.grey,
             },
         }))
     ), [data_toko]);
@@ -60,21 +63,35 @@ export default function ChooseOutlet({navigation}) {
         const selectedOutlet = data_toko.find((toko) => toko.toko_id.toString() === selectedId);
         if (selectedOutlet) {
             console.log("Selected Toko ID:", selectedOutlet.toko_id);
+            navigation.navigate("PrepareOutlet")
+        } else {
+            setSnackbarVisible(true);
         }
     };
 
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
+                {/* ============================= IMAGE =============================  */}
                 <View style={styles.containerImage}>
                     <Image source={require("../assets/outlet.png")}/>
                 </View>
+
+                {/* ============================= RADIO BUTTON =============================  */}
                 <RadioGroup radioButtons={radioButtons} onPress={setSelectedId} selectedId={selectedId}/>
+
+                {/* ============================= BUTTON PILIH TOKO =============================  */}
                 <TouchableOpacity onPress={handleSelectOutlet}>
                     <View style={styles.containerButton}>
                         <Text style={styles.textButton}>Pilih Toko</Text>
                     </View>
                 </TouchableOpacity>
+
+                {/* ============================= SNACKBAR =============================  */}
+                <SnackbarComponent
+                    visible={snackbarVisible}
+                    onDismiss={() => setSnackbarVisible(false)}
+                    message="Toko belum dipilih!"/>
             </SafeAreaView>
         </ScrollView>
     );
@@ -96,7 +113,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
     },
     containerButton: {
-        backgroundColor: "#F99722",
+        backgroundColor: Colors.primaryColor,
         width: 350,
         height: 50,
         borderRadius: 10,

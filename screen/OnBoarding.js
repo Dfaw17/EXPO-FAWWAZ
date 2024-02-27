@@ -1,6 +1,7 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, SafeAreaView, Dimensions, TouchableOpacity, StatusBar} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
+import * as Colors from '../assets/colour';
 
 export default function OnBoarding({navigation}) {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -20,11 +21,15 @@ export default function OnBoarding({navigation}) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle={"light-content"} backgroundColor={'#f99722'}/>
+            <StatusBar barStyle={"light-content"} backgroundColor={Colors.primaryColor}/>
+
+            {/* ============================= SECTION TITLE =============================  */}
             <View style={styles.containerTitle}>
                 <Image source={require('../assets/onboarding1.png')}/>
                 <Text style={styles.title1}>Aplikasi Kasir Gratis Untuk UMKM Indonesia</Text>
             </View>
+
+            {/* ============================= SECTION BANNER =============================  */}
             <Carousel
                 data={data_image}
                 renderItem={_renderItem}
@@ -45,6 +50,8 @@ export default function OnBoarding({navigation}) {
                     inactiveDotScale={0.6}
                 />
             </View>
+
+            {/* ============================= SECTION BUTTON =============================  */}
             <View style={styles.containerButton}>
                 <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                     <View style={styles.btnRegister}>
@@ -94,13 +101,13 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: 'orange',
+        backgroundColor: Colors.secondaryColor,
     },
     inactiveDot: {
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: 'grey',
+        backgroundColor: Colors.grey,
     },
     containerButton: {
         alignItems: "center",
@@ -109,10 +116,10 @@ const styles = StyleSheet.create({
         height: 150,
         borderTopWidth: 2,
         borderTopStyle: 'solid',
-        borderTopColor: '#C4C4C4',
+        borderTopColor: Colors.grey,
     },
     btnRegister: {
-        backgroundColor: '#F99722',
+        backgroundColor: Colors.primaryColor,
         width: 350,
         height: 40,
         justifyContent: 'center',
@@ -126,7 +133,7 @@ const styles = StyleSheet.create({
     },
     btnLogin: {
         borderWidth: 1,
-        borderColor: '#F99722',
+        borderColor: Colors.primaryColor,
         width: 350,
         height: 40,
         justifyContent: 'center',
@@ -135,6 +142,6 @@ const styles = StyleSheet.create({
     },
     textLogin: {
         fontFamily: "PoppinsMedium",
-        color: '#F99722'
+        color: Colors.primaryColor
     },
 });
