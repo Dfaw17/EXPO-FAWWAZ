@@ -6,7 +6,7 @@ import {
 import * as Colors from '../assets/colour';
 import React, {useState} from "react";
 import Carousel, {Pagination} from "react-native-snap-carousel";
-import {black30, greylight} from "../assets/colour";
+import SectionComponent from "../component/section";
 
 export default function Home({navigation}) {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -119,7 +119,7 @@ export default function Home({navigation}) {
                 </View>
 
                 {/* ============================= POSTKU PLUS =============================  */}
-                <View style={styles.componentSection}/>
+                <SectionComponent/>
                 <View style={styles.cardPostkuPlus}>
                     <Image source={require('../assets/berandapos.png')}/>
                     <Text style={styles.textPostkuPlus}>Berlangganan POSTKU Plus</Text>
@@ -128,7 +128,8 @@ export default function Home({navigation}) {
                         <Text style={styles.textPostkuPlus3}>Upgrade</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.componentSection}/>
+                <SectionComponent/>
+                <View style={styles.spaceBottom}/>
 
             </ScrollView>
 
@@ -262,11 +263,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: Colors.black70,
     },
-    componentSection: {
-        backgroundColor: Colors.greylight,
-        height: 5,
-        marginTop: 20
-    },
     cardPostkuPlus: {
         alignSelf: 'center',
         backgroundColor: 'white',
@@ -319,5 +315,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         fontFamily: "PoppinsSemiBold"
+    },
+    spaceBottom: {
+        backgroundColor: "white",
+        height: 80
     },
 });
